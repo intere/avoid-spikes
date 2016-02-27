@@ -23,11 +23,8 @@ class GameScene: SKScene {
     var location: CGPoint?
     var spikeTimeSpawnNumber = 0.3
 
-    let offWhiteColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-    let offBlackColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-
     override func didMoveToView(view: SKView) {
-        backgroundColor = UIColor.orangeColor()
+        backgroundColor = ColorProvider.themeColor
         physicsWorld.contactDelegate = self
 
         spawnPlayer()
@@ -61,13 +58,13 @@ class GameScene: SKScene {
 // MARK: - Spawn Functions
 extension GameScene {
     func spawnPlayer() {
-        player = SKSpriteNode(color: offWhiteColor, size: CGSize(width: 50, height: 50))
+        player = SKSpriteNode(color: ColorProvider.offWhiteColor, size: CGSize(width: 50, height: 50))
         if let player = player {
             player.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMinY(frame) + 100)
             player.physicsBody = SKPhysicsBody(rectangleOfSize: player.size)
             player.physicsBody?.affectedByGravity = false
             player.physicsBody?.allowsRotation = false
-            player.physicsBody?.dynamic = true
+            player.physicsBody?.dynamic = false
             player.physicsBody?.categoryBitMask = PhysicsCategory.player
             player.physicsBody?.contactTestBitMask = PhysicsCategory.spike
 
@@ -76,7 +73,7 @@ extension GameScene {
     }
 
     func spawnSpike() {
-        spike = SKSpriteNode(color: offBlackColor, size: CGSize(width: 10, height: 125))
+        spike = SKSpriteNode(color: ColorProvider.offBlackColor, size: CGSize(width: 10, height: 125))
         if let spike = spike {
             spike.position.x = CGFloat(arc4random_uniform(UInt32(frame.size.width)))
             spike.position.y = CGRectGetMaxY(frame)+spike.size.height
@@ -93,7 +90,7 @@ extension GameScene {
     }
 
     func spawnGround() {
-        ground = SKSpriteNode(color: offBlackColor, size: CGSize(width: CGRectGetWidth(frame), height: 150))
+        ground = SKSpriteNode(color: ColorProvider.offBlackColor, size: CGSize(width: CGRectGetWidth(frame), height: 150))
         if let ground = ground {
             ground.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMinY(frame))
             addChild(ground)
@@ -104,7 +101,7 @@ extension GameScene {
         lblMain = SKLabelNode(fontNamed: "Futura")
         if let lblMain = lblMain {
             lblMain.fontSize = 100
-            lblMain.fontColor = offWhiteColor
+            lblMain.fontColor = ColorProvider.offWhiteColor
             lblMain.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMidY(frame)+150)
             lblMain.text = "Start!"
 
@@ -116,7 +113,7 @@ extension GameScene {
         lblScore = SKLabelNode(fontNamed: "Futura")
         if let lblScore = lblScore {
             lblScore.fontSize = 50
-            lblScore.fontColor = offWhiteColor
+            lblScore.fontColor = ColorProvider.offWhiteColor
             lblScore.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMinY(frame)+25)
             lblScore.text = "Start!"
 
@@ -183,6 +180,7 @@ extension GameScene : SKPhysicsContactDelegate {
             lblMain.fontSize = 75
             lblMain.text = "Game Over"
         }
+        waitThenMoveToTitleScene()
     }
 }
 
@@ -200,5 +198,15 @@ extension GameScene {
         if let lblScore = lblScore {
             lblScore.text = "Score: \(score)"
         }
+    }
+    
+    func waitThenMoveToTitleScene() {
+        let wait = SKAction.waitForDuration(1)
+        let transition = SKAction.runBlock {
+            if let titleScene = TitleScene(fileNamed: "TitleScene"), view = self.view {
+                view.presentScene(titleScene, transition: SKTransition.crossFadeWithDuration(1))
+            }
+        }
+        runAction(SKAction.sequence([wait, transition]))
     }
 }
