@@ -12,6 +12,7 @@
 		366F9FAF1C81F9040048DE9C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 366F9FAD1C81F9040048DE9C /* GameScene.sks */; };
 		366F9FB01C81F9040048DE9C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F9FAE1C81F9040048DE9C /* GameScene.swift */; };
 		366F9FB31C81FA820048DE9C /* ColorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F9FB21C81FA820048DE9C /* ColorProvider.swift */; };
+		366F9FB51C81FFF10048DE9C /* SKTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F9FB41C81FFF10048DE9C /* SKTriangle.swift */; };
 		938498691C7EB34800F6BBFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938498681C7EB34800F6BBFC /* AppDelegate.swift */; };
 		9384986F1C7EB34800F6BBFC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9384986E1C7EB34800F6BBFC /* GameViewController.swift */; };
 		938498721C7EB34800F6BBFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938498701C7EB34800F6BBFC /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		366F9FAD1C81F9040048DE9C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		366F9FAE1C81F9040048DE9C /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		366F9FB21C81FA820048DE9C /* ColorProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorProvider.swift; sourceTree = "<group>"; };
+		366F9FB41C81FFF10048DE9C /* SKTriangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTriangle.swift; sourceTree = "<group>"; };
 		938498651C7EB34800F6BBFC /* Avoid Spikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Avoid Spikes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		938498681C7EB34800F6BBFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9384986E1C7EB34800F6BBFC /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		366F9FA71C81F89A0048DE9C /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				366F9FB41C81FFF10048DE9C /* SKTriangle.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9384986F1C7EB34800F6BBFC /* GameViewController.swift in Sources */,
+				366F9FB51C81FFF10048DE9C /* SKTriangle.swift in Sources */,
 				366F9FB31C81FA820048DE9C /* ColorProvider.swift in Sources */,
 				938498691C7EB34800F6BBFC /* AppDelegate.swift in Sources */,
 				366F9FB01C81F9040048DE9C /* GameScene.swift in Sources */,

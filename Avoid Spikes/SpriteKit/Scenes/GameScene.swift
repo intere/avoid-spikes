@@ -11,7 +11,7 @@ import SpriteKit
 class GameScene: SKScene {
 
     var player: SKSpriteNode?
-    var spike: SKSpriteNode?
+    var spike: SKTriangle?
     var ground: SKSpriteNode?
 
     var lblMain: SKLabelNode?
@@ -73,8 +73,10 @@ extension GameScene {
     }
 
     func spawnSpike() {
-        spike = SKSpriteNode(color: ColorProvider.offBlackColor, size: CGSize(width: 10, height: 125))
+        spike = SKTriangle.createTriangleOfSize(10, height: 125)
+        
         if let spike = spike {
+            spike.color = ColorProvider.offBlackColor
             spike.position.x = CGFloat(arc4random_uniform(UInt32(frame.size.width)))
             spike.position.y = CGRectGetMaxY(frame)+spike.size.height
             spike.physicsBody = SKPhysicsBody(rectangleOfSize: spike.size)
@@ -161,14 +163,16 @@ extension GameScene : SKPhysicsContactDelegate {
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
 
-        if (firstBody.categoryBitMask == PhysicsCategory.player && secondBody.categoryBitMask == PhysicsCategory.spike) || (firstBody.categoryBitMask == PhysicsCategory.spike && secondBody.categoryBitMask == PhysicsCategory.player) {
-            spikeCollision(firstBody.node as? SKSpriteNode, spikeTemp: secondBody.node as? SKSpriteNode)
+        if (firstBody.categoryBitMask == PhysicsCategory.player && secondBody.categoryBitMask == PhysicsCategory.spike) {
+            spikeCollision(firstBody.node as? SKSpriteNode, spikeTemp: secondBody.node as? SKTriangle)
+        } else if (firstBody.categoryBitMask == PhysicsCategory.spike && secondBody.categoryBitMask == PhysicsCategory.player) {
+            spikeCollision(secondBody.node as? SKSpriteNode, spikeTemp: firstBody.node as? SKTriangle)
         }
     }
 
-    func spikeCollision(playerTemp: SKSpriteNode?, spikeTemp: SKSpriteNode?) {
-        if let _ = playerTemp, spikeTemp = spikeTemp {
-            spikeTemp.removeFromParent()
+    func spikeCollision(playerTemp: SKSpriteNode?, spikeTemp: SKTriangle?) {
+        if let playerTemp = playerTemp, _ = spikeTemp {
+            playerTemp.removeFromParent()
             isAlive = false
             showGameOver()
         }
