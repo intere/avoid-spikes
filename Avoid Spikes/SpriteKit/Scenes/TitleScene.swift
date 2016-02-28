@@ -27,7 +27,7 @@ extension TitleScene {
             
             if let gameScene = GameScene(fileNamed: "GameScene") {
                 view.ignoresSiblingOrder = true
-                gameScene.scaleMode = .AspectFill
+                gameScene.scaleMode = .ResizeFill
                 
                 view.presentScene(gameScene, transition: SKTransition.crossFadeWithDuration(1))
             }
@@ -53,7 +53,7 @@ extension TitleScene {
             gameTitle = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 300))
             if let gameTitle = gameTitle {
                 gameTitle.textColor = ColorProvider.offWhiteColor
-                gameTitle.font = UIFont(name: "Futura", size: 50)
+                gameTitle.font = UIFont(name: "Futura", size: 40)
                 gameTitle.textAlignment = .Center
                 gameTitle.text = "AVOID SPIKES!"
                 view.addSubview(gameTitle)

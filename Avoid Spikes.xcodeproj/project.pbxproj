@@ -20,6 +20,7 @@
 		938498771C7EB34800F6BBFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938498751C7EB34800F6BBFC /* LaunchScreen.storyboard */; };
 		938498821C7EB34800F6BBFC /* Avoid_SpikesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938498811C7EB34800F6BBFC /* Avoid_SpikesTests.swift */; };
 		9384988D1C7EB34800F6BBFC /* Avoid_SpikesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9384988C1C7EB34800F6BBFC /* Avoid_SpikesUITests.swift */; };
+		93D8825E1C83766200042D56 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8825D1C83766200042D56 /* Globals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		938498881C7EB34800F6BBFC /* Avoid SpikesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Avoid SpikesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9384988C1C7EB34800F6BBFC /* Avoid_SpikesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avoid_SpikesUITests.swift; sourceTree = "<group>"; };
 		9384988E1C7EB34800F6BBFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93D8825D1C83766200042D56 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 		938498671C7EB34800F6BBFC /* Avoid Spikes */ = {
 			isa = PBXGroup;
 			children = (
+				93D8825C1C83760A00042D56 /* Utilities */,
 				366F9FB11C81FA750048DE9C /* Providers */,
 				366F9FA61C81F89A0048DE9C /* SpriteKit */,
 				938498681C7EB34800F6BBFC /* AppDelegate.swift */,
@@ -173,6 +176,14 @@
 				9384988E1C7EB34800F6BBFC /* Info.plist */,
 			);
 			path = "Avoid SpikesUITests";
+			sourceTree = "<group>";
+		};
+		93D8825C1C83760A00042D56 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				93D8825D1C83766200042D56 /* Globals.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +254,7 @@
 				TargetAttributes = {
 					938498641C7EB34800F6BBFC = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 268S5GJFWZ;
 					};
 					9384987C1C7EB34800F6BBFC = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -313,6 +325,7 @@
 				366F9FB31C81FA820048DE9C /* ColorProvider.swift in Sources */,
 				938498691C7EB34800F6BBFC /* AppDelegate.swift in Sources */,
 				366F9FB01C81F9040048DE9C /* GameScene.swift in Sources */,
+				93D8825E1C83766200042D56 /* Globals.swift in Sources */,
 				366F9FAA1C81F8B80048DE9C /* TitleScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,10 +468,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Avoid Spikes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.icolasoft.Avoid-Spikes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -466,10 +482,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Avoid Spikes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.icolasoft.Avoid-Spikes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

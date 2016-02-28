@@ -58,7 +58,7 @@ class GameScene: SKScene {
 // MARK: - Spawn Functions
 extension GameScene {
     func spawnPlayer() {
-        player = SKSpriteNode(color: ColorProvider.offWhiteColor, size: CGSize(width: 50, height: 50))
+        player = SKSpriteNode(color: ColorProvider.offWhiteColor, size: CGSize(width: 50, height: 90))
         if let player = player {
             player.position = CGPoint(x: CGRectGetMidX(frame), y: CGRectGetMinY(frame) + 100)
             player.physicsBody = SKPhysicsBody(rectangleOfSize: player.size)
@@ -73,12 +73,12 @@ extension GameScene {
     }
 
     func spawnSpike() {
-        spike = SKTriangle.createTriangleOfSize(10, height: 125)
+        spike = SKTriangle.createTriangleOfSize(10, height: 70)
         
         if let spike = spike {
             spike.color = ColorProvider.offBlackColor
-            spike.position.x = CGFloat(arc4random_uniform(UInt32(frame.size.width)))
-            spike.position.y = CGRectGetMaxY(frame)+spike.size.height
+            spike.position.x = random() * CGRectGetMaxX(frame)
+            spike.position.y = CGRectGetMaxY(frame) + spike.size.height
             spike.physicsBody = SKPhysicsBody(rectangleOfSize: spike.size)
             spike.physicsBody?.affectedByGravity = false
             spike.physicsBody?.allowsRotation = false
@@ -181,7 +181,7 @@ extension GameScene : SKPhysicsContactDelegate {
     func showGameOver() {
         if let lblMain = lblMain {
             lblMain.alpha = 1
-            lblMain.fontSize = 75
+            lblMain.fontSize = 60
             lblMain.text = "Game Over"
         }
         waitThenMoveToTitleScene()
