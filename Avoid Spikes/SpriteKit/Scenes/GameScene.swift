@@ -191,8 +191,8 @@ extension GameScene : SKPhysicsContactDelegate {
 // MARK: - PhysicsCategory
 extension GameScene {
     struct PhysicsCategory {
-        static let player: UInt32 = 0
-        static let spike: UInt32 = 2 >> 0
+        static let player = UInt32(1 << 0)
+        static let spike = UInt32(1 << 1)
     }
 }
 
